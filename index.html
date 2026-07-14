@@ -115,8 +115,9 @@
   .app{
     background:linear-gradient(135deg,var(--panel2),var(--panel3));
     border:1px solid rgba(255,255,255,0.08);border-radius:16px;
-    padding:18px 12px;text-align:center;cursor:pointer;transition:all 0.25s;
+    padding:16px 12px;text-align:center;cursor:pointer;transition:all 0.25s;
     position:relative;overflow:hidden;
+    display:flex;align-items:center;justify-content:center;min-height:56px;
   }
   .app::before{
     content:"";position:absolute;top:0;left:0;right:0;height:3px;
@@ -129,8 +130,7 @@
   }
   .app:hover::before{transform:scaleX(1)}
   .app:active{transform:scale(0.95)}
-  .app .ico{font-size:32px;display:block;margin-bottom:8px;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.3))}
-  .app .nm{font-size:12.5px;font-weight:600;color:var(--text);line-height:1.3}
+  .app .nm{font-size:13.5px;font-weight:600;color:var(--text);line-height:1.3}
   .quick-actions{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:16px}
   .quick-btn{
     padding:20px 16px;border-radius:16px;
@@ -289,9 +289,8 @@
   @media(max-width:600px){
     .quick-actions{grid-template-columns:1fr 1fr}
     .apps{grid-template-columns:repeat(auto-fill,minmax(100px,1fr))}
-    .app{padding:14px 8px}
-    .app .ico{font-size:28px}
-    .app .nm{font-size:11.5px}
+    .app{padding:14px 8px;min-height:50px}
+    .app .nm{font-size:12.5px}
     .modal{padding:24px}
     .modal-icon{font-size:56px}
     .modal h3{font-size:20px}
@@ -520,155 +519,155 @@
 
 const APPS = [
   // Search & AI
-  { name:"Google", ico:"🔍", cmd:"https://www.google.com/", cat:"search" },
-  { name:"Bing", ico:"🅱️", cmd:"https://www.bing.com/", cat:"search" },
-  { name:"DuckDuckGo", ico:"🦆", cmd:"https://duckduckgo.com/", cat:"search" },
-  { name:"ChatGPT", ico:"🤖", cmd:"https://chat.openai.com/", cat:"ai" },
-  { name:"Claude", ico:"🧠", cmd:"https://claude.ai/", cat:"ai" },
-  { name:"Perplexity", ico:"🔮", cmd:"https://www.perplexity.ai/", cat:"ai" },
-  { name:"Gemini", ico:"✨", cmd:"https://gemini.google.com/", cat:"ai" },
-  { name:"Copilot", ico:"🚀", cmd:"https://copilot.microsoft.com/", cat:"ai" },
-  { name:"Grok", ico:"🤯", cmd:"https://grok.com/", cat:"ai" },
-  { name:"Mistral", ico:"🌬️", cmd:"https://chat.mistral.ai/", cat:"ai" },
+  { name:"Google", cmd:"https://www.google.com/", cat:"search" },
+  { name:"Bing", cmd:"https://www.bing.com/", cat:"search" },
+  { name:"DuckDuckGo", cmd:"https://duckduckgo.com/", cat:"search" },
+  { name:"ChatGPT", cmd:"https://chat.openai.com/", cat:"ai" },
+  { name:"Claude", cmd:"https://claude.ai/", cat:"ai" },
+  { name:"Perplexity", cmd:"https://www.perplexity.ai/", cat:"ai" },
+  { name:"Gemini", cmd:"https://gemini.google.com/", cat:"ai" },
+  { name:"Copilot", cmd:"https://copilot.microsoft.com/", cat:"ai" },
+  { name:"Grok", cmd:"https://grok.com/", cat:"ai" },
+  { name:"Mistral", cmd:"https://chat.mistral.ai/", cat:"ai" },
   
   // Social Media
-  { name:"TikTok", ico:"🎵", cmd:"tiktok://", url:"https://www.tiktok.com/", cat:"social" },
-  { name:"Instagram", ico:"📸", cmd:"instagram://", url:"https://www.instagram.com/", cat:"social" },
-  { name:"Twitter/X", ico:"🐦", cmd:"x://", url:"https://x.com/", cat:"social" },
-  { name:"Facebook", ico:"👤", cmd:"fb://", url:"https://www.facebook.com/", cat:"social" },
-  { name:"LinkedIn", ico:"💼", cmd:"linkedin://", url:"https://www.linkedin.com/", cat:"social" },
-  { name:"Reddit", ico:"👽", cmd:"https://www.reddit.com/", cat:"social" },
-  { name:"Pinterest", ico:"📌", cmd:"pinterest://", url:"https://www.pinterest.com/", cat:"social" },
-  { name:"Snapchat", ico:"👻", cmd:"snapchat://", url:"https://www.snapchat.com/", cat:"social" },
-  { name:"Threads", ico:"🧵", cmd:"barcelona://", url:"https://www.threads.net/", cat:"social" },
-  { name:"Mastodon", ico:"🐘", cmd:"https://mastodon.social/", cat:"social" },
-  { name:"Bluesky", ico:"🦋", cmd:"https://bsky.app/", cat:"social" },
+  { name:"TikTok", cmd:"tiktok://", url:"https://www.tiktok.com/", cat:"social" },
+  { name:"Instagram", cmd:"instagram://", url:"https://www.instagram.com/", cat:"social" },
+  { name:"Twitter/X", cmd:"x://", url:"https://x.com/", cat:"social" },
+  { name:"Facebook", cmd:"fb://", url:"https://www.facebook.com/", cat:"social" },
+  { name:"LinkedIn", cmd:"linkedin://", url:"https://www.linkedin.com/", cat:"social" },
+  { name:"Reddit", cmd:"https://www.reddit.com/", cat:"social" },
+  { name:"Pinterest", cmd:"pinterest://", url:"https://www.pinterest.com/", cat:"social" },
+  { name:"Snapchat", cmd:"snapchat://", url:"https://www.snapchat.com/", cat:"social" },
+  { name:"Threads", cmd:"barcelona://", url:"https://www.threads.net/", cat:"social" },
+  { name:"Mastodon", cmd:"https://mastodon.social/", cat:"social" },
+  { name:"Bluesky", cmd:"https://bsky.app/", cat:"social" },
   
   // Video & Streaming
-  { name:"YouTube", ico:"▶️", cmd:"vnd.youtube://", url:"https://www.youtube.com/", cat:"video" },
-  { name:"Netflix", ico:"🎬", cmd:"https://www.netflix.com/", cat:"video" },
-  { name:"Disney+", ico:"🏰", cmd:"https://www.disneyplus.com/", cat:"video" },
-  { name:"Prime Video", ico:"📺", cmd:"https://www.primevideo.com/", cat:"video" },
-  { name:"Hulu", ico:"📡", cmd:"https://www.hulu.com/", cat:"video" },
-  { name:"Twitch", ico:"🎮", cmd:"twitch://", url:"https://www.twitch.tv/", cat:"video" },
-  { name:"HBO Max", ico:"🎭", cmd:"https://www.max.com/", cat:"video" },
-  { name:"Crunchyroll", ico:"🍥", cmd:"https://www.crunchyroll.com/", cat:"video" },
-  { name:"Vimeo", ico:"🎥", cmd:"https://vimeo.com/", cat:"video" },
+  { name:"YouTube", cmd:"vnd.youtube://", url:"https://www.youtube.com/", cat:"video" },
+  { name:"Netflix", cmd:"https://www.netflix.com/", cat:"video" },
+  { name:"Disney+", cmd:"https://www.disneyplus.com/", cat:"video" },
+  { name:"Prime Video", cmd:"https://www.primevideo.com/", cat:"video" },
+  { name:"Hulu", cmd:"https://www.hulu.com/", cat:"video" },
+  { name:"Twitch", cmd:"twitch://", url:"https://www.twitch.tv/", cat:"video" },
+  { name:"HBO Max", cmd:"https://www.max.com/", cat:"video" },
+  { name:"Crunchyroll", cmd:"https://www.crunchyroll.com/", cat:"video" },
+  { name:"Vimeo", cmd:"https://vimeo.com/", cat:"video" },
   
   // Music
-  { name:"Spotify", ico:"🎧", cmd:"spotify:", url:"https://open.spotify.com/", cat:"music" },
-  { name:"Apple Music", ico:"🎵", cmd:"music://", url:"https://music.apple.com/", cat:"music" },
-  { name:"SoundCloud", ico:"☁️", cmd:"https://soundcloud.com/", cat:"music" },
-  { name:"YouTube Music", ico:"🎶", cmd:"https://music.youtube.com/", cat:"music" },
-  { name:"Tidal", ico:"🌊", cmd:"https://tidal.com/", cat:"music" },
-  { name:"Deezer", ico:"🎼", cmd:"https://www.deezer.com/", cat:"music" },
+  { name:"Spotify", cmd:"spotify:", url:"https://open.spotify.com/", cat:"music" },
+  { name:"Apple Music", cmd:"music://", url:"https://music.apple.com/", cat:"music" },
+  { name:"SoundCloud", cmd:"https://soundcloud.com/", cat:"music" },
+  { name:"YouTube Music", cmd:"https://music.youtube.com/", cat:"music" },
+  { name:"Tidal", cmd:"https://tidal.com/", cat:"music" },
+  { name:"Deezer", cmd:"https://www.deezer.com/", cat:"music" },
   
   // Communication
-  { name:"WhatsApp", ico:"💬", cmd:"whatsapp://", url:"https://web.whatsapp.com/", cat:"chat" },
-  { name:"Telegram", ico:"✈️", cmd:"tg://", url:"https://web.telegram.org/", cat:"chat" },
-  { name:"Discord", ico:"🎮", cmd:"discord://", url:"https://discord.com/app", cat:"chat" },
-  { name:"Slack", ico:"💼", cmd:"slack://", url:"https://slack.com/", cat:"chat" },
-  { name:"Teams", ico:"👥", cmd:"msteams://", url:"https://teams.microsoft.com/", cat:"chat" },
-  { name:"Signal", ico:"🔒", cmd:"sgnl://", url:"https://signal.org/", cat:"chat" },
-  { name:"Zoom", ico:"📹", cmd:"zoomus://", url:"https://zoom.us/", cat:"chat" },
-  { name:"Skype", ico:"☁️", cmd:"skype:", url:"https://www.skype.com/", cat:"chat" },
-  { name:"Messenger", ico:"💭", cmd:"fb-messenger://", url:"https://www.messenger.com/", cat:"chat" },
+  { name:"WhatsApp", cmd:"whatsapp://", url:"https://web.whatsapp.com/", cat:"chat" },
+  { name:"Telegram", cmd:"tg://", url:"https://web.telegram.org/", cat:"chat" },
+  { name:"Discord", cmd:"discord://", url:"https://discord.com/app", cat:"chat" },
+  { name:"Slack", cmd:"slack://", url:"https://slack.com/", cat:"chat" },
+  { name:"Teams", cmd:"msteams://", url:"https://teams.microsoft.com/", cat:"chat" },
+  { name:"Signal", cmd:"sgnl://", url:"https://signal.org/", cat:"chat" },
+  { name:"Zoom", cmd:"zoomus://", url:"https://zoom.us/", cat:"chat" },
+  { name:"Skype", cmd:"skype:", url:"https://www.skype.com/", cat:"chat" },
+  { name:"Messenger", cmd:"fb-messenger://", url:"https://www.messenger.com/", cat:"chat" },
   
   // Email
-  { name:"Gmail", ico:"📧", cmd:"https://mail.google.com/", cat:"email" },
-  { name:"Outlook", ico:"📬", cmd:"ms-outlook://", url:"https://outlook.live.com/", cat:"email" },
-  { name:"ProtonMail", ico:"🔐", cmd:"https://mail.proton.me/", cat:"email" },
-  { name:"Yahoo Mail", ico:"📮", cmd:"https://mail.yahoo.com/", cat:"email" },
+  { name:"Gmail", cmd:"https://mail.google.com/", cat:"email" },
+  { name:"Outlook", cmd:"ms-outlook://", url:"https://outlook.live.com/", cat:"email" },
+  { name:"ProtonMail", cmd:"https://mail.proton.me/", cat:"email" },
+  { name:"Yahoo Mail", cmd:"https://mail.yahoo.com/", cat:"email" },
   
   // Productivity
-  { name:"Notion", ico:"📝", cmd:"notion://", url:"https://www.notion.so/", cat:"productivity" },
-  { name:"Google Drive", ico:"📁", cmd:"https://drive.google.com/", cat:"productivity" },
-  { name:"Dropbox", ico:"📦", cmd:"db://", url:"https://www.dropbox.com/", cat:"productivity" },
-  { name:"OneDrive", ico:"☁️", cmd:"https://onedrive.live.com/", cat:"productivity" },
-  { name:"Obsidian", ico:"💎", cmd:"obsidian://", url:"https://obsidian.md/", cat:"productivity" },
-  { name:"Evernote", ico:"🐘", cmd:"evernote://", url:"https://evernote.com/", cat:"productivity" },
-  { name:"Todoist", ico:"✅", cmd:"https://todoist.com/", cat:"productivity" },
-  { name:"Trello", ico:"📋", cmd:"https://trello.com/", cat:"productivity" },
-  { name:"Asana", ico:"🎯", cmd:"https://asana.com/", cat:"productivity" },
-  { name:"Google Docs", ico:"📄", cmd:"https://docs.google.com/", cat:"productivity" },
-  { name:"Google Sheets", ico:"📊", cmd:"https://sheets.google.com/", cat:"productivity" },
+  { name:"Notion", cmd:"notion://", url:"https://www.notion.so/", cat:"productivity" },
+  { name:"Google Drive", cmd:"https://drive.google.com/", cat:"productivity" },
+  { name:"Dropbox", cmd:"db://", url:"https://www.dropbox.com/", cat:"productivity" },
+  { name:"OneDrive", cmd:"https://onedrive.live.com/", cat:"productivity" },
+  { name:"Obsidian", cmd:"obsidian://", url:"https://obsidian.md/", cat:"productivity" },
+  { name:"Evernote", cmd:"evernote://", url:"https://evernote.com/", cat:"productivity" },
+  { name:"Todoist", cmd:"https://todoist.com/", cat:"productivity" },
+  { name:"Trello", cmd:"https://trello.com/", cat:"productivity" },
+  { name:"Asana", cmd:"https://asana.com/", cat:"productivity" },
+  { name:"Google Docs", cmd:"https://docs.google.com/", cat:"productivity" },
+  { name:"Google Sheets", cmd:"https://sheets.google.com/", cat:"productivity" },
   
   // Development
-  { name:"GitHub", ico:"🐙", cmd:"https://github.com/", cat:"dev" },
-  { name:"GitLab", ico:"🦊", cmd:"https://gitlab.com/", cat:"dev" },
-  { name:"VS Code", ico:"💻", cmd:"vscode://", cat:"dev" },
-  { name:"Stack Overflow", ico:"📚", cmd:"https://stackoverflow.com/", cat:"dev" },
-  { name:"CodePen", ico:"✏️", cmd:"https://codepen.io/", cat:"dev" },
-  { name:"Dev.to", ico:"👨‍💻", cmd:"https://dev.to/", cat:"dev" },
-  { name:"npm", ico:"📦", cmd:"https://www.npmjs.com/", cat:"dev" },
-  { name:"Docker Hub", ico:"🐳", cmd:"https://hub.docker.com/", cat:"dev" },
-  { name:"MDN", ico:"📖", cmd:"https://developer.mozilla.org/", cat:"dev" },
-  { name:"Replit", ico:"🔷", cmd:"https://replit.com/", cat:"dev" },
+  { name:"GitHub", cmd:"https://github.com/", cat:"dev" },
+  { name:"GitLab", cmd:"https://gitlab.com/", cat:"dev" },
+  { name:"VS Code", cmd:"vscode://", cat:"dev" },
+  { name:"Stack Overflow", cmd:"https://stackoverflow.com/", cat:"dev" },
+  { name:"CodePen", cmd:"https://codepen.io/", cat:"dev" },
+  { name:"Dev.to", cmd:"https://dev.to/", cat:"dev" },
+  { name:"npm", cmd:"https://www.npmjs.com/", cat:"dev" },
+  { name:"Docker Hub", cmd:"https://hub.docker.com/", cat:"dev" },
+  { name:"MDN", cmd:"https://developer.mozilla.org/", cat:"dev" },
+  { name:"Replit", cmd:"https://replit.com/", cat:"dev" },
   
   // Shopping
-  { name:"Amazon", ico:"📦", cmd:"https://www.amazon.com/", cat:"shopping" },
-  { name:"eBay", ico:"🏷️", cmd:"https://www.ebay.com/", cat:"shopping" },
-  { name:"Etsy", ico:"🎨", cmd:"https://www.etsy.com/", cat:"shopping" },
-  { name:"Walmart", ico:"🛒", cmd:"https://www.walmart.com/", cat:"shopping" },
-  { name:"AliExpress", ico:"🌏", cmd:"https://www.aliexpress.com/", cat:"shopping" },
+  { name:"Amazon", cmd:"https://www.amazon.com/", cat:"shopping" },
+  { name:"eBay", cmd:"https://www.ebay.com/", cat:"shopping" },
+  { name:"Etsy", cmd:"https://www.etsy.com/", cat:"shopping" },
+  { name:"Walmart", cmd:"https://www.walmart.com/", cat:"shopping" },
+  { name:"AliExpress", cmd:"https://www.aliexpress.com/", cat:"shopping" },
   
   // News & Info
-  { name:"Wikipedia", ico:"📖", cmd:"https://www.wikipedia.org/", cat:"news" },
-  { name:"Medium", ico:"📰", cmd:"https://medium.com/", cat:"news" },
-  { name:"CNN", ico:"📺", cmd:"https://www.cnn.com/", cat:"news" },
-  { name:"BBC", ico:"🇬🇧", cmd:"https://www.bbc.com/", cat:"news" },
-  { name:"NYT", ico:"📰", cmd:"https://www.nytimes.com/", cat:"news" },
+  { name:"Wikipedia", cmd:"https://www.wikipedia.org/", cat:"news" },
+  { name:"Medium", cmd:"https://medium.com/", cat:"news" },
+  { name:"CNN", cmd:"https://www.cnn.com/", cat:"news" },
+  { name:"BBC", cmd:"https://www.bbc.com/", cat:"news" },
+  { name:"NYT", cmd:"https://www.nytimes.com/", cat:"news" },
   
   // Gaming
-  { name:"Steam", ico:"🎮", cmd:"steam://open/main", cat:"gaming" },
-  { name:"Epic Games", ico:"🎯", cmd:"com.epicgames.launcher://", url:"https://www.epicgames.com/", cat:"gaming" },
-  { name:"Xbox", ico:"🟢", cmd:"xbox://", url:"https://www.xbox.com/", cat:"gaming" },
-  { name:"PlayStation", ico:"🎮", cmd:"https://www.playstation.com/", cat:"gaming" },
-  { name:"Nintendo", ico:"🍄", cmd:"https://www.nintendo.com/", cat:"gaming" },
+  { name:"Steam", cmd:"steam://open/main", cat:"gaming" },
+  { name:"Epic Games", cmd:"com.epicgames.launcher://", url:"https://www.epicgames.com/", cat:"gaming" },
+  { name:"Xbox", cmd:"xbox://", url:"https://www.xbox.com/", cat:"gaming" },
+  { name:"PlayStation", cmd:"https://www.playstation.com/", cat:"gaming" },
+  { name:"Nintendo", cmd:"https://www.nintendo.com/", cat:"gaming" },
   
   // Maps & Travel
-  { name:"Google Maps", ico:"🗺️", cmd:"https://maps.google.com/", cat:"maps" },
-  { name:"Waze", ico:"🚗", cmd:"waze://", url:"https://www.waze.com/", cat:"maps" },
-  { name:"Airbnb", ico:"🏠", cmd:"https://www.airbnb.com/", cat:"maps" },
-  { name:"Booking", ico:"🏨", cmd:"https://www.booking.com/", cat:"maps" },
+  { name:"Google Maps", cmd:"https://maps.google.com/", cat:"maps" },
+  { name:"Waze", cmd:"waze://", url:"https://www.waze.com/", cat:"maps" },
+  { name:"Airbnb", cmd:"https://www.airbnb.com/", cat:"maps" },
+  { name:"Booking", cmd:"https://www.booking.com/", cat:"maps" },
   
   // Windows Apps
-  { name:"Calculator", ico:"🧮", cmd:"calculator:", cat:"windows" },
-  { name:"Settings", ico:"⚙️", cmd:"ms-settings:", cat:"windows" },
-  { name:"File Explorer", ico:"📂", cmd:"explorer:", cat:"windows" },
-  { name:"Snipping Tool", ico:"✂️", cmd:"screenclip:", cat:"windows" },
-  { name:"Photos", ico:"🖼️", cmd:"ms-photos:", cat:"windows" },
-  { name:"Paint", ico:"🎨", cmd:"ms-paint:", cat:"windows" },
-  { name:"Clock", ico:"⏰", cmd:"ms-clock:", cat:"windows" },
-  { name:"Weather", ico:"🌤️", cmd:"bingweather:", cat:"windows" },
-  { name:"Store", ico:"🛍️", cmd:"ms-windows-store:", cat:"windows" },
-  { name:"Word", ico:"📝", cmd:"ms-word:", cat:"windows" },
-  { name:"Excel", ico:"📊", cmd:"ms-excel:", cat:"windows" },
-  { name:"PowerPoint", ico:"📽️", cmd:"ms-powerpoint:", cat:"windows" },
-  { name:"OneNote", ico:"📓", cmd:"onenote:", cat:"windows" },
-  { name:"Edge", ico:"🌐", cmd:"microsoft-edge:", cat:"windows" },
-  { name:"Chrome", ico:"🌐", cmd:"googlechrome:", cat:"windows" },
-  { name:"Firefox", ico:"🦊", cmd:"firefox:", cat:"windows" },
-  { name:"VLC", ico:"🎬", cmd:"vlc://", cat:"windows" },
-  { name:"Notepad", ico:"📝", cmd:"file:text.txt", cat:"windows" },
+  { name:"Calculator", cmd:"calculator:", cat:"windows" },
+  { name:"Settings", cmd:"ms-settings:", cat:"windows" },
+  { name:"File Explorer", cmd:"explorer:", cat:"windows" },
+  { name:"Snipping Tool", cmd:"screenclip:", cat:"windows" },
+  { name:"Photos", cmd:"ms-photos:", cat:"windows" },
+  { name:"Paint", cmd:"ms-paint:", cat:"windows" },
+  { name:"Clock", cmd:"ms-clock:", cat:"windows" },
+  { name:"Weather", cmd:"bingweather:", cat:"windows" },
+  { name:"Store", cmd:"ms-windows-store:", cat:"windows" },
+  { name:"Word", cmd:"ms-word:", cat:"windows" },
+  { name:"Excel", cmd:"ms-excel:", cat:"windows" },
+  { name:"PowerPoint", cmd:"ms-powerpoint:", cat:"windows" },
+  { name:"OneNote", cmd:"onenote:", cat:"windows" },
+  { name:"Edge", cmd:"microsoft-edge:", cat:"windows" },
+  { name:"Chrome", cmd:"googlechrome:", cat:"windows" },
+  { name:"Firefox", cmd:"firefox:", cat:"windows" },
+  { name:"VLC", cmd:"vlc://", cat:"windows" },
+  { name:"Notepad", cmd:"file:text.txt", cat:"windows" },
 ];
 
 const CATEGORIES = [
-  { id:"all", name:"All", icon:"🌟" },
-  { id:"search", name:"Search", icon:"🔍" },
-  { id:"ai", name:"AI", icon:"🤖" },
-  { id:"social", name:"Social", icon:"👥" },
-  { id:"video", name:"Video", icon:"▶️" },
-  { id:"music", name:"Music", icon:"🎵" },
-  { id:"chat", name:"Chat", icon:"💬" },
-  { id:"email", name:"Email", icon:"📧" },
-  { id:"productivity", name:"Work", icon:"💼" },
-  { id:"dev", name:"Dev", icon:"💻" },
-  { id:"shopping", name:"Shop", icon:"🛒" },
-  { id:"news", name:"News", icon:"📰" },
-  { id:"gaming", name:"Games", icon:"🎮" },
-  { id:"maps", name:"Maps", icon:"🗺️" },
-  { id:"windows", name:"Windows", icon:"🪟" },
+  { id:"all", name:"All" },
+  { id:"search", name:"Search" },
+  { id:"ai", name:"AI" },
+  { id:"social", name:"Social" },
+  { id:"video", name:"Video" },
+  { id:"music", name:"Music" },
+  { id:"chat", name:"Chat" },
+  { id:"email", name:"Email" },
+  { id:"productivity", name:"Work" },
+  { id:"dev", name:"Dev" },
+  { id:"shopping", name:"Shop" },
+  { id:"news", name:"News" },
+  { id:"gaming", name:"Games" },
+  { id:"maps", name:"Maps" },
+  { id:"windows", name:"Windows" },
 ];
 
 let role = null;
@@ -749,7 +748,7 @@ function buildCategoryTabs(){
   CATEGORIES.forEach(cat => {
     const el = document.createElement('div');
     el.className = 'tab' + (cat.id === 'all' ? ' active' : '');
-    el.textContent = `${cat.icon} ${cat.name}`;
+    el.textContent = cat.name;
     el.onclick = () => {
       document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
       el.classList.add('active');
@@ -786,7 +785,7 @@ function buildAppGrid(searchTerm = ''){
   filtered.forEach(a => {
     const el = document.createElement('div');
     el.className = 'app';
-    el.innerHTML = `<span class="ico">${a.ico}</span><span class="nm">${a.name}</span>`;
+    el.innerHTML = `<span class="nm">${a.name}</span>`;
     el.onclick = () => handleAppClick(a);
     grid.appendChild(el);
   });
